@@ -48,7 +48,10 @@ export default () => {
   server.use(passport.session());
 
   // Setup status endpoint
-  server.get("/", (_req, res) => res.send("Hello World! Yours Anonymously API!"));
+  server.get("/", (_req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.send("Hello World! Yours Anonymously API!")
+  });
 
   // Setup API routes
   server.use("/posts", commentsRouter);
